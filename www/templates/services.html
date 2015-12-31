@@ -10,10 +10,10 @@
 <ion-content class="has-subheader">
 <!--   <ion-refresher on-refresh="doRefresh()"></ion-refresher> -->
   <ion-list>
-    <ion-item ng-repeat="item in outlets | filter: query" class="item-thumbnail-right item-text-wrap" href="#">
-      <img ng-src="{{item.logo || 'img/no-image.png'}}" alt="{{item.outlet_name}} Photo" class="fit-thumbnail">
+    <ion-item ng-repeat="item in outlets | filter: query | orderBy: 'outlet_name'" class="item-thumbnail-right item-text-wrap" href="#/tab/services/{{item.outlet_name}}">
+      <div class="vertical-align right-align-abs"><img ng-src="{{item.logo || 'img/no-image.png'}}" alt="{{item.outlet_name}} Logo" class="fit-thumbnail"></div>
       <h2>{{getName(item.outlet_name)}}</h2>
-      <h4>{{getLocation(item.outlet_name)}}</h4>
+      <h4>{{getLocation(item.outlet_name)}} {{item.building}}</h4>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -31,11 +31,29 @@ angular.module('starter', ['ionic'])
       abstract: true,
       templateUrl: 'templates/tabs.html'
     })
+    .state('tabs.today', {
+      url: '/today',
+      views: {
+        'today-tab' : {
+          templateUrl: 'templates/today.html',
+          controller: 'WeekController'
+        }
+      }
+    })
     .state('tabs.services', {
       url: '/services',
       views: {
         'services-tab' : {
           templateUrl: 'templates/services.html',
+          controller: 'ServiceController'
+        }
+      }
+    })
+    .state('tabs.detail', {
+      url: '/services/:outletId',
+      views: {
+        'services-tab' : {
+          templateUrl: 'templates/detail.html',
           controller: 'ServiceController'
         }
       }
@@ -50,21 +68,46 @@ angular.module('starter', ['ionic'])
       }
     });
 
-    $urlRouterProvider.otherwise('/tab/services');
+    $urlRouterProvider.otherwise('/tab/today');
 })
 
-.controller('ServiceController', ['$scope', '$http', '$state', function($scope, $http, $state){
+.controller('ServiceController', ['$scope', '$http', '$state', '$ionicHistory', function($scope, $http, $state, $ionicHistory){
   $http.get('https://api.uwaterloo.ca/v2/foodservices/locations.json?key=' + secret.key).success(function(data) {
     $scope.outlets = data.data;
+    $scope.whichOutlet = $state.params.outletId;
+    console.log($scope.whichOutlet);
   });
+
+  $scope.back = function() {
+    $ionicHistory.goBack();
+  };
 
   // Utilities
   $scope.getName = function(str) {
     return str.split(' - ')[0];
-  }
+  };
 
   $scope.getLocation = function(str) {
-      return str.split(' - ')[1];
+    return str.split(' - ')[1];
+  };
+
+  $scope.shortenDay = function(str) {
+    return str.substring(0, 3);
+  };
+
+  $scope.to12Hour = function(time) {
+    var hourMin = time.split(':');
+    var hour = parseInt(hourMin[0]);
+    var suffix = 'AM';
+    if (hour > 12) {
+      hour -= 12;
+      suffix = 'PM';
+    }
+    if (hour == 00) {
+      hour = 12;
+      suffix = 'AM';
+    }
+    return hour.toString() + ':' + hourMin[1].toString() + suffix;
   }
 }])
 
@@ -75,8 +118,13 @@ angular.module('starter', ['ionic'])
   });
 
   $scope.weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  $scope.week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-// According styling based on Ionic template: http://codepen.io/ionic/pen/uJkCz
+  $scope.todayDate = new Date();
+
+  $scope.todayDay = $scope.week[$scope.todayDate.getDay()];
+
+// Accordian styling based on Ionic template: http://codepen.io/ionic/pen/uJkCz
   $scope.toggleGroup = function(group) {
     if ($scope.isGroupShown(group)) {
       $scope.shownGroup = null;

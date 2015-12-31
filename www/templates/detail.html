@@ -1,0 +1,24 @@
+
+<ion-view view-title="Details">
+	<ion-nav-buttons side="primary">
+    <a class="button button-icon ion-arrow-left-c" href="#/tab/services"></a>
+  </ion-nav-buttons>
+
+	<ion-content>
+		<ion-list class="list inset">
+			<ion-item class="item-text-wrap" ng-repeat="item in outlets | filter: {outlet_name: whichOutlet}">
+	      <h1>{{getName(item.outlet_name)}}</h1>
+	      <div ng-if="item.logo"><img ng-src="{{item.logo}}" class="fit-thumbnail thumb-right-manual"></div>
+	      <h4>{{getLocation(item.outlet_name)}} {{item.building}}</h4>
+	      <p>{{item.description}}</p>
+	      <br class="clear-float"></p>
+				<h2>Hours</h2>
+					<dl ng-repeat="(day, hours) in item.opening_hours">
+						<dt><strong class="all-caps">{{shortenDay(day)}}:</strong></dt>
+						<span ng-if="hours.is_closed"><dd>CLOSED</dd></span>
+						<span ng-if="!hours.is_closed"><dd>{{to12Hour(hours.opening_hour)}} - {{to12Hour(hours.closing_hour)}}</dd></span>
+					</d1>
+    	</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

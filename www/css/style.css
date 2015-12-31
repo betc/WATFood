@@ -3,8 +3,56 @@
 	height: auto !important;
 }
 
+.thumb-right-manual {
+	float: right;
+  margin: 0 0 10px 10px;
+}
+
+.clear-float {
+	clear: both;
+}
+
 .vertical-align {
-	vertical-align: middle !important; 
+	display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+.right-align-abs {
+	right:0;
+}
+
+.all-caps {
+	text-transform: uppercase;
+}
+
+dl {
+	margin-top: 14px;
+	font-size: 0.9em;
+}
+
+dt { 
+	display:block;
+	float:left;
+	width:50px;
+	text-align: right;
+	line-height: 50%;
+}
+
+dd {
+	display:block;
+	line-height: 50%;
 }
 
 .bullet {
@@ -28,10 +76,10 @@
 	list-style: circle;
 	list-style-position: inside;
 	text-indent: -1em;
-    padding-left: 1em;
+  padding-left: 1em;
 }
 
-/*According styling based on Ionic template: http://codepen.io/ionic/pen/uJkCz*/
+/*Accordian styling based on Ionic template: http://codepen.io/ionic/pen/uJkCz*/
 .list .item.item-accordion {
   line-height: 38px;
   padding-top: 0;

@@ -1,16 +1,15 @@
-<ion-view view-title="This Week's Menu">
+<ion-view view-title="Today's Menu">
 
 <ion-content>
 <!--   <ion-refresher on-refresh="doRefresh()"></ion-refresher> -->
 
   <ion-list>
-    <div ng-repeat="day in weekDays">
-      <ion-item class="item-stable" ng-click="toggleGroup(day)" ng-class="{active: isGroupShown(day)}">
-        <i class="icon" ng-class="isGroupShown(day) ? 'ion-minus' : 'ion-plus'"></i>
+    <div ng-repeat="day in weekDays | filter: todayDay">
+      <ion-item class="item-stable">
         {{day}}
       </ion-item>
 
-        <ion-item class="item-accordion item-text-wrap" ng-repeat="item in weekOutlets" ng-show="isGroupShown(day)">
+        <ion-item class="item-accordion item-text-wrap" ng-repeat="item in weekOutlets">
           <strong>{{item.outlet_name}}</strong>
            <ul class="bullet" ng-repeat="menuDay in item.menu | filter:{'day':  day}:true">
 

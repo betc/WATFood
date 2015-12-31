@@ -69,12 +69,14 @@ angular.module('starter', ['ionic'])
 }])
 
 .controller('WeekController', ['$scope', '$http', '$state', function($scope, $http, $state){
+  // Currently there are no open food services so I'm using a past menu for testing purposes.
   $http.get('https://api.uwaterloo.ca/v2/foodservices/2013/12/menu.json?key=' + secret.key).success(function(data) {
     $scope.weekOutlets = data.data.outlets;
   });
 
   $scope.weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
+// According styling based on Ionic template: http://codepen.io/ionic/pen/uJkCz
   $scope.toggleGroup = function(group) {
     if ($scope.isGroupShown(group)) {
       $scope.shownGroup = null;

@@ -6,3 +6,6 @@ A hybrid mobile app that displays University of Waterloo on campus food services
   * Fix thumbnail alignment.
 * Configure detail view for outlets.
 * Configure week tab.
+	* Week view or day view?
+	* Fix hard coding of the lunch and dinner menus.
+	* Consider improving UI display.

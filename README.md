@@ -3,6 +3,6 @@ A hybrid mobile app that displays University of Waterloo on campus food services
 
 ### To Do
 * Services view.
-..* Fix thumbnail alignment.
+  * Fix thumbnail alignment.
 * Configure detail view for outlets.
 * Configure week tab.

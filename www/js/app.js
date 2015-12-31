@@ -39,6 +39,15 @@ angular.module('starter', ['ionic'])
           controller: 'ServiceController'
         }
       }
+    })
+    .state('tabs.week', {
+      url: '/week',
+      views: {
+        'week-tab' : {
+          templateUrl: 'templates/week.html',
+          controller: 'WeekController'
+        }
+      }
     });
 
     $urlRouterProvider.otherwise('/tab/services');
@@ -47,15 +56,35 @@ angular.module('starter', ['ionic'])
 .controller('ServiceController', ['$scope', '$http', '$state', function($scope, $http, $state){
   $http.get('https://api.uwaterloo.ca/v2/foodservices/locations.json?key=' + secret.key).success(function(data) {
     $scope.outlets = data.data;
-    
-    // Utilities
-    $scope.getName = function(str) {
-      return str.split(' - ')[0];
-    }
-
-    $scope.getLocation = function(str) {
-        return str.split(' - ')[1];
-    }
-
   });
+
+  // Utilities
+  $scope.getName = function(str) {
+    return str.split(' - ')[0];
+  }
+
+  $scope.getLocation = function(str) {
+      return str.split(' - ')[1];
+  }
+}])
+
+.controller('WeekController', ['$scope', '$http', '$state', function($scope, $http, $state){
+  $http.get('https://api.uwaterloo.ca/v2/foodservices/2013/12/menu.json?key=' + secret.key).success(function(data) {
+    $scope.weekOutlets = data.data.outlets;
+  });
+
+  $scope.weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
+  $scope.toggleGroup = function(group) {
+    if ($scope.isGroupShown(group)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = group;
+    }
+  };
+
+  $scope.isGroupShown = function(group) {
+    return $scope.shownGroup === group;
+  };
+
 }]);

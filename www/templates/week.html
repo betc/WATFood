@@ -1,0 +1,34 @@
+<ion-view view-title="This Week's Menu">
+
+<ion-content class="has-subheader">
+<!--   <ion-refresher on-refresh="doRefresh()"></ion-refresher> -->
+
+  <ion-list>
+    <div ng-repeat="day in weekDays">
+      <ion-item class="item-stable" ng-click="toggleGroup(day)" ng-class="{active: isGroupShown(day)}">
+        <i class="icon" ng-class="isGroupShown(day) ? 'ion-minus' : 'ion-plus'"></i>
+        {{day}}
+      </ion-item>
+
+        <ion-item class="item-accordion item-text-wrap" ng-repeat="item in weekOutlets" ng-show="isGroupShown(day)">
+          <strong>{{item.outlet_name}}</strong>
+           <ul class="bullet" ng-repeat="menuDay in item.menu | filter:{'day':  day}:true">
+
+           <li class="bullet-header"><i class="icon ion-spoon"></i> Lunch</li>
+            <ul class="sub-bullet" ng-repeat="lunch in menuDay.meals.lunch">
+              <li>{{lunch.product_name}}</li>
+            </ul>
+            <li class="bullet-header"><i class="icon ion-spoon"></i> Dinner</li>
+            <ul class="sub-bullet" ng-repeat="dinner in menuDay.meals.dinner">
+              <li>{{dinner.product_name}}</li>
+            </ul>
+
+          </ul>
+        </ion-item>
+
+    </div>
+  </ion-list>
+
+</ion-content>
+
+</ion-view>

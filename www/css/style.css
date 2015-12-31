@@ -3,8 +3,44 @@
 	height: auto !important;
 }
 
-.item-thumbnail-right img {
-	margin: auto !important;
+.vertical-align {
 	vertical-align: middle !important; 
-	display: inline-block !important;
+}
+
+.bullet {
+	margin-bottom: 12px;
+}
+
+.bullet li {
+	font-size: 100%;
+	line-height: 100%;
+}
+
+.bullet-header {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-transform: uppercase;
+}
+
+.sub-bullet li {
+	font-size: 85%;
+	line-height: 100%;
+	list-style: circle;
+	list-style-position: inside;
+	text-indent: -1em;
+    padding-left: 1em;
+}
+
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
 }

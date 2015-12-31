@@ -1,0 +1,21 @@
+<ion-view view-title="Services">
+
+<div class="bar bar-subheader item-input-inset bar-light">
+  <label class="item-input-wrapper">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="search" ng-model="query" placeholder="Search">
+  </label>
+</div>
+
+<ion-content class="has-subheader">
+<!--   <ion-refresher on-refresh="doRefresh()"></ion-refresher> -->
+  <ion-list>
+    <ion-item ng-repeat="item in outlets | filter: query" class="item-thumbnail-right item-text-wrap" href="#">
+      <img ng-src="{{item.logo || 'img/no-image.png'}}" alt="{{item.outlet_name}} Photo" class="fit-thumbnail">
+      <h2>{{getName(item.outlet_name)}}</h2>
+      <h4>{{getLocation(item.outlet_name)}}</h4>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+</ion-view>

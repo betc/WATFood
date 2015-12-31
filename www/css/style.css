@@ -1,0 +1,10 @@
+.fit-thumbnail { 
+	width: 100px !important;
+	height: auto !important;
+}
+
+.item-thumbnail-right img {
+	margin: auto !important;
+	vertical-align: middle !important; 
+	display: inline-block !important;
+}

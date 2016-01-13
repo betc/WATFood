@@ -109,11 +109,14 @@ angular.module('starter', ['ionic'])
     }
     return hour.toString() + ':' + hourMin[1].toString() + suffix;
   }
+
+  $scope.isOpen = function(today,open,close) {
+    //to do
+  }
 }])
 
 .controller('WeekController', ['$scope', '$http', '$state', function($scope, $http, $state){
-  // Currently there are no open food services so I'm using a past menu for testing purposes.
-  $http.get('https://api.uwaterloo.ca/v2/foodservices/2013/12/menu.json?key=' + secret.key).success(function(data) {
+  $http.get('https://api.uwaterloo.ca/v2/foodservices/menu.json?key=' + secret.key).success(function(data) {
     $scope.weekOutlets = data.data.outlets;
   });
 

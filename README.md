@@ -1,6 +1,8 @@
 # WATFood
 A hybrid mobile app that displays University of Waterloo on campus food services including details such as location, hours, and available menu options depending on the current week.
 
+The main source code is in the /www/ folder.
+
 ### To Do
 * ~~Services view.~~
   * ~~Fix thumbnail alignment.~~

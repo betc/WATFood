@@ -12,5 +12,6 @@ Built on the Ionic framework. The main source code is in the /www/ folder.
 	* Fix hard coding of the lunch and dinner menus.
 	* Consider improving UI display.
 	* Interacting with specific food service should navigate to detail view.
+* Add feature (new tab?) that displays all services currently open.
 * Add messages when no data is loaded.
 * Add preloaders.
